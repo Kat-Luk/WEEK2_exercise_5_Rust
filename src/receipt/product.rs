@@ -14,7 +14,7 @@ pub fn create_products() -> Vec<StoreProduct> {
         price: 200
     };
     let product3 = StoreProduct {
-        name: String::from("potato"),
+        name: String::from("Potato"),
         price: 1
     };
     let products = vec![product1, product2, product3];

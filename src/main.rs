@@ -38,7 +38,7 @@ fn main() {
                 cart.products.pop();
             }
             "3" => {
-                complete_purchase(&mut cart);
+                let _ = complete_purchase(&mut cart);
                 println!("Thank you for your purchase!");
                 break;
             }
