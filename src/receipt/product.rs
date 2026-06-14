@@ -1,4 +1,4 @@
-#[derive(Clone)]
+#[derive(Clone, PartialEq)]
 pub struct StoreProduct {
     pub name: String,
     pub price: i32,
