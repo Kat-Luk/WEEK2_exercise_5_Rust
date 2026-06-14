@@ -1,5 +1,7 @@
 use crate::receipt::product::*;
 use crate::receipt::product;
+use crate::File;
+use std::io::Write;
 const PRODUCT_1_NAME: &str = "Zbox 720";
 const PRODUCT_2_NAME: &str = "GPU - AND Random RT6600";
 const PRODUCT_3_NAME: &str = "Potato";
@@ -13,7 +15,7 @@ pub fn add_to_cart(cart: &mut ReceiptContent, products: &Vec<product::StoreProdu
     cart.products.push(products[choice].clone());
 }
 
-pub fn complete_purchase(cart: &mut ReceiptContent) -> (i32, i32, i32, i32){
+pub fn complete_purchase(cart: &mut ReceiptContent) -> Result<(), String>{
     let mut total = 0;
     let mut total_p1 =0;
     let mut total_p2 =0;
@@ -28,5 +30,20 @@ pub fn complete_purchase(cart: &mut ReceiptContent) -> (i32, i32, i32, i32){
             total_p3 += 1;
         }
     }
-    return (total_p1, total_p2, total_p3, total);
+    let mut file = File::create("receipt.txt").map_err(|e| e.to_string())?;
+    writeln!(file, "Imaginary Town General Store").expect("Error writing!");
+    writeln!(file, "------------------------------").expect("Error writing!");
+    if total_p1 > 0 {
+        writeln!(file, "Zbox 720 ({}) - 600€", total_p1).expect("Error writing!");
+    }
+    if total_p2 > 0 {
+        writeln!(file, "GPU - AND Random RT6600 ({}) - 200€", total_p2).expect("Error writing!");
+    }
+    if total_p3 > 0 {
+        writeln!(file, "Potato ({}) - 1€", total_p3).expect("Error writing!");
+    }
+    writeln!(file, "------------------------------").expect("Error writing!");
+    writeln!(file, "Final price: {}", total).expect("Error writing!");
+    writeln!(file, "------------------------------").expect("Error writing!");    
+    return Ok(());
 }

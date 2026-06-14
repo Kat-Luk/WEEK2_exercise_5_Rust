@@ -38,22 +38,7 @@ fn main() {
                 cart.products.pop();
             }
             "3" => {
-                let (total_p1, total_p2, total_p3, total) = complete_purchase(&mut cart);
-                let mut file = File::create("receipt.txt").expect("Error creating the file!");
-                writeln!(file, "Imaginary Town General Store").expect("Error writing!");
-                writeln!(file, "------------------------------").expect("Error writing!");
-                if total_p1 > 0 {
-                    writeln!(file, "Zbox 720 ({}) - 600€", total_p1).expect("Error writing!");
-                }
-                if total_p2 > 0 {
-                    writeln!(file, "GPU - AND Random RT6600 ({}) - 200€", total_p2).expect("Error writing!");
-                }
-                if total_p3 > 0 {
-                    writeln!(file, "Potato ({}) - 1€", total_p3).expect("Error writing!");
-                }
-                writeln!(file, "------------------------------").expect("Error writing!");
-                writeln!(file, "Final price: {}", total).expect("Error writing!");
-                writeln!(file, "------------------------------").expect("Error writing!");
+                complete_purchase(&mut cart);
                 println!("Thank you for your purchase!");
                 break;
             }
