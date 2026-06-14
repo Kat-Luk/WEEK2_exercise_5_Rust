@@ -38,7 +38,7 @@ fn main() {
                 cart.products.pop();
             }
             "3" => {
-                let (total_p1, total_p2, total_p3, total) = print_receipt(&mut cart);
+                let (total_p1, total_p2, total_p3, total) = complete_purchase(&mut cart);
                 let mut file = File::create("receipt.txt").expect("Error creating the file!");
                 writeln!(file, "Imaginary Town General Store").expect("Error writing!");
                 writeln!(file, "------------------------------").expect("Error writing!");

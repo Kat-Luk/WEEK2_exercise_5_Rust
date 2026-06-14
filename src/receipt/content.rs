@@ -12,7 +12,7 @@ pub fn add_to_cart(cart: &mut ReceiptContent, products: &[StoreProduct; 3], choi
     cart.products.push(products[choice].clone());
 }
 
-pub fn print_receipt(cart: &mut ReceiptContent) -> (i32, i32, i32, i32){
+pub fn complete_purchase(cart: &mut ReceiptContent) -> (i32, i32, i32, i32){
     let mut total = 0;
     let mut total_p1 =0;
     let mut total_p2 =0;
