@@ -1,7 +1,7 @@
 pub mod receipt;
 use crate::receipt::content::*;
 use crate::receipt::product::*;
-use std::io::Write;
+use std::io::*;
 use std::io;
 use std::fs::File;
 
