@@ -1,4 +1,5 @@
 use crate::receipt::product::*;
+use crate::receipt::product;
 const PRODUCT_1_NAME: &str = "Zbox 720";
 const PRODUCT_2_NAME: &str = "GPU - AND Random RT6600";
 const PRODUCT_3_NAME: &str = "Potato";
@@ -8,7 +9,7 @@ pub struct ReceiptContent {
     pub store: String,
 }
 
-pub fn add_to_cart(cart: &mut ReceiptContent, products: &[StoreProduct; 3], choice: usize) {
+pub fn add_to_cart(cart: &mut ReceiptContent, products: &Vec<product::StoreProduct>, choice: usize) {
     cart.products.push(products[choice].clone());
 }
 

@@ -4,7 +4,7 @@ pub struct StoreProduct {
     pub price: i32,
 }
 
-pub fn create_products() -> [StoreProduct; 3]{
+pub fn create_products() -> Vec<StoreProduct> {
     let product1 = StoreProduct {
         name: String::from("Zbox 720"),
         price: 600
@@ -17,6 +17,6 @@ pub fn create_products() -> [StoreProduct; 3]{
         name: String::from("potato"),
         price: 1
     };
-    let products = [product1, product2, product3];
+    let products = vec![product1, product2, product3];
     return products;
 }
